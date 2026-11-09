@@ -77,6 +77,16 @@ GET http://connect.rom.miui.com/generate_204
 
 ---
 
+## 下载
+
+预编译版本见 [Releases](https://github.com/HU4222/xiaoyuanwang-zidongdenglu/releases)。
+
+版本 1.0.6 ｜ 4,648,004 字节 ｜ SHA256 `e46442a1d4136d62595024dced8c3004b4c1f0d77b05752b881c26eee205745c`
+
+> 包内为测试签名（密码与别名均为 `campusnet`），**不适合对外分发**。正式使用请自行生成 keystore 重新签名，步骤见下节。
+
+---
+
 ## 构建
 
 需要 JDK 17 和 Android SDK（compileSdk 34）。
