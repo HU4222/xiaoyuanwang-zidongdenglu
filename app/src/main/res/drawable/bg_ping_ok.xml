@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 状态点的 ping 外圈：常态透明，由代码做 scale(.85→1.9) + alpha(.5→0) 的 2.4s 循环 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/ok" />
+</shape>

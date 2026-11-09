@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    高级设置：延续 DropLink 的「一卡一事」——每个分组一张卡片，
+    卡片内是 标签 + 输入框，行与行之间只靠留白分隔，不再加分隔线。
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_hero_glow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 顶栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space12"
+            android:paddingTop="@dimen/space8"
+            android:paddingEnd="@dimen/pageH"
+            android:paddingBottom="@dimen/space8">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="@dimen/touchMin"
+                android:layout_height="@dimen/touchMin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="返回"
+                android:padding="@dimen/space12"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_back"
+                android:tint="@color/text2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space6"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="高级设置"
+                android:textColor="@color/text"
+                android:textFontWeight="650"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                style="@style/BtnPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:paddingStart="@dimen/space18"
+                android:paddingEnd="@dimen/space18"
+                android:text="保存" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/settingsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/pageH"
+                android:paddingTop="@dimen/space8"
+                android:paddingEnd="@dimen/pageH"
+                android:paddingBottom="@dimen/space24">
+
+                <!-- ========== 认证方式 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="认证方式" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/cardPadV"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="协议类型" />
+
+                        <TextView
+                            android:id="@+id/tvProvider"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_input"
+                            android:gravity="center_vertical" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="不确定就留「自动识别」，检测网络后会自动判断" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== 地址 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地址" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/cardPadV"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="连通性探测地址" />
+
+                        <EditText
+                            android:id="@+id/etProbeUrl"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="http://connect.rom.miui.com/generate_204"
+                            android:inputType="textUri" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="门户页地址（留空自动探测）" />
+
+                        <EditText
+                            android:id="@+id/etPortalUrl"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="http://100.64.1.201:8080/"
+                            android:inputType="textUri" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="登录提交地址（留空从门户页解析）" />
+
+                        <EditText
+                            android:id="@+id/etAuthUrl"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="留空即可"
+                            android:inputType="textUri" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== 字段映射 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="字段映射" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/cardPadV"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="用户名字段名" />
+
+                        <EditText
+                            android:id="@+id/etUserField"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="自动识别，如 userid / DDDDD / username"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="密码字段名" />
+
+                        <EditText
+                            android:id="@+id/etPassField"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="自动识别，如 passwd / upass / password"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="自定义表单模板（可选，优先级最高）" />
+
+                        <EditText
+                            android:id="@+id/etFormTpl"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="user=${user}&amp;pass=${pass}"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="可用变量：${user} ${pass} ${md5pass} ${ts} ${rand}" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="额外固定参数" />
+
+                        <EditText
+                            android:id="@+id/etExtra"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="a=1&amp;b=2"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="成功关键字（逗号分隔，留空用内置）" />
+
+                        <EditText
+                            android:id="@+id/etSuccess"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="登录成功,success"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="失败关键字（逗号分隔）" />
+
+                        <EditText
+                            android:id="@+id/etFail"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="密码错误,失败"
+                            android:inputType="text" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== 深澜参数 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="深澜参数" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/cardPadV"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="ac_id" />
+
+                        <EditText
+                            android:id="@+id/etAcId"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="1"
+                            android:inputType="number" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="type（1=无线）" />
+
+                        <EditText
+                            android:id="@+id/etSrunType"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="1"
+                            android:inputType="number" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="仅深澜 srun 需要，其它协议可忽略" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== 节奏 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="节奏" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/cardPadV"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="心跳间隔" />
+
+                        <TextView
+                            android:id="@+id/tvInterval"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_input"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/btnH"
+                            android:paddingStart="@dimen/space14"
+                            android:paddingEnd="@dimen/space14"
+                            android:textColor="@color/text"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="校园网通常空闲 2 分钟就断，建议 45~60 秒" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="失败重试间隔（秒）" />
+
+                        <EditText
+                            android:id="@+id/etBackoff"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="30"
+                            android:inputType="number" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="最大连续重试次数" />
+
+                        <EditText
+                            android:id="@+id/etRetryMax"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="3"
+                            android:inputType="number" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请求超时（毫秒）" />
+
+                        <EditText
+                            android:id="@+id/etTimeout"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="8000"
+                            android:inputType="number" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== 生效范围 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="生效范围" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/space6"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="启用 Wi-Fi 白名单" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swOnlyWifi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="只在下列 Wi-Fi 下守护，其它 Wi-Fi 自动暂停" />
+
+                        <EditText
+                            android:id="@+id/etSsid"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Campus-WiFi,eduroam"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space8"
+                            android:text="无论是否启用白名单，认证请求都只从 Wi-Fi 网卡发出。移动数据能上网，但不经过校园网关，无法完成认证。" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== Root ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Root 增强" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/space6"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="启用 root 能力" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swRoot"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRootBoost"
+                            style="@style/BtnGhost"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/touchMin"
+                            android:text="一键解除系统后台限制" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="加电池白名单 + 放行后台/唤醒锁，这是最有效的保活手段" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="登录前执行的命令（可选）" />
+
+                        <EditText
+                            android:id="@+id/etRootPre"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="svc wifi disable; svc wifi enable"
+                            android:inputType="text" />
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="登录后执行的命令（可选）" />
+
+                        <EditText
+                            android:id="@+id/etRootPost"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="留空即可"
+                            android:inputType="text" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="进程级看门狗（被杀后拉起）" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swRootWatchdog"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== LSPosed ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LSPosed 增强" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/cardPadV"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/space6">
+
+                        <TextView
+                            style="@style/TextLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="目标应用包名（逗号分隔，支持前缀 *）" />
+
+                        <EditText
+                            android:id="@+id/etXposedTarget"
+                            style="@style/InputField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="com.example.campusclient"
+                            android:inputType="text" />
+
+                        <TextView
+                            android:id="@+id/rowXposedPick"
+                            style="@style/TextRowTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:text="推荐应用 · 扫描本机已装应用"
+                            android:textColor="@color/brandText" />
+
+                        <TextView
+                            style="@style/TextHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="从本机已装应用里挑出校园网客户端，点一下即填入上方。填好后仍需在 LSPosed 作用域里勾选它才生效" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="自动填充账号密码" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swXposedFill"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="自动点击登录按钮" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swXposedClick"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========== 其他 ========== -->
+                <TextView
+                    style="@style/TextSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="其他" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardCampusNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/cardPadH"
+                        android:paddingTop="@dimen/space6"
+                        android:paddingEnd="@dimen/cardPadH"
+                        android:paddingBottom="@dimen/cardPadV">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="开机自动启动守护" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swBoot"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/listRowH"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextRowTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="常驻通知" />
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/swNotify"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space8"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnExport"
+                                style="@style/BtnGhost"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/touchMin"
+                                android:layout_marginEnd="@dimen/space8"
+                                android:layout_weight="1"
+                                android:text="导出配置" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnImport"
+                                style="@style/BtnGhost"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/touchMin"
+                                android:layout_weight="1"
+                                android:text="导入配置" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</FrameLayout>

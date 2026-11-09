@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    主题与组件样式，量值全部来自 DropLink 视觉风格（第三、四、五节）。
+    字号阶梯 / 字重 400·500·550·650 / 圆角 12·18·22 一一对应，不要临时改数。
+
+    DayNight：深色不是反相，values-night 有独立色值。
+    forceDarkAllowed=false 是关键——界面已手动适配，再让系统强制反色会把色板打烂。
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.CampusNet" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand</item>
+        <item name="colorOnPrimary">@color/onBrand</item>
+        <item name="colorPrimaryContainer">@color/brandSoft</item>
+        <item name="colorOnPrimaryContainer">@color/brandText</item>
+        <item name="colorSecondary">@color/brand2</item>
+        <item name="colorOnSecondary">@color/onBrand</item>
+        <item name="colorSurface">@color/panel</item>
+        <item name="colorOnSurface">@color/text</item>
+        <item name="colorSurfaceVariant">@color/panelSoft</item>
+        <item name="colorOnSurfaceVariant">@color/text2</item>
+        <item name="colorOutline">@color/lineStrong</item>
+        <item name="colorOutlineVariant">@color/line</item>
+        <item name="colorError">@color/danger</item>
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="android:textColorPrimary">@color/text</item>
+        <item name="android:textColorSecondary">@color/text2</item>
+        <item name="android:textColorHint">@color/muted</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/lightSystemBars</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/lightSystemBars</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="materialAlertDialogTheme">@style/Theme.CampusNet.Dialog</item>
+        <item name="materialSwitchStyle">@style/SwitchCampusNet</item>
+    </style>
+
+    <style name="Theme.CampusNet.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/panel</item>
+        <item name="colorOnSurface">@color/text</item>
+        <item name="colorPrimary">@color/brand</item>
+    </style>
+
+    <!-- ================= 面 ================= -->
+
+    <!-- 卡片：白底 + 1px 描边 + 18dp 圆角 + 阴影，缺一个都会"飘" -->
+    <style name="CardCampusNet" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/panel</item>
+        <item name="cardCornerRadius">@dimen/radiusCard</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeColor">@color/line</item>
+        <item name="strokeWidth">@dimen/lineW</item>
+        <item name="rippleColor">@color/tap</item>
+    </style>
+
+    <!-- ================= 字 ================= -->
+
+    <!-- 页面主标题 24sp / 650 / -.02em（中文大字号不加负字距会散） -->
+    <style name="TextHero">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">650</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <!-- 卡片标题 14sp / 650 -->
+    <style name="TextCardTitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">650</item>
+    </style>
+
+    <!-- 区块小标题 14sp / 650 / text-2 -->
+    <style name="TextSection">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text2</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">650</item>
+        <item name="android:layout_marginTop">@dimen/space22</item>
+        <item name="android:layout_marginBottom">@dimen/space8</item>
+    </style>
+
+    <!-- 正文 15sp / 400 -->
+    <style name="TextBody">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:lineSpacingExtra">@dimen/space3</item>
+    </style>
+
+    <!-- 字段标签 13sp / 400 / text-2 -->
+    <style name="TextLabel">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text2</item>
+        <item name="android:layout_marginTop">@dimen/space14</item>
+        <item name="android:layout_marginBottom">@dimen/space6</item>
+    </style>
+
+    <!-- 辅助说明 13sp / muted -->
+    <style name="TextHint">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/muted</item>
+        <item name="android:layout_marginTop">@dimen/space6</item>
+        <item name="android:lineSpacingExtra">@dimen/space2</item>
+    </style>
+
+    <!-- 键值行 13sp，左灰右黑 -->
+    <style name="TextKvKey">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/muted</item>
+    </style>
+
+    <style name="TextKvVal">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">550</item>
+    </style>
+
+    <!-- 列表行标题 15sp / 400（触控区整行可点，行高 52–56dp） -->
+    <style name="TextRowTitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!-- 导航/胶囊标签 11sp / 500 -->
+    <style name="TextNav">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/text2</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+
+    <!-- ================= 控件 ================= -->
+
+    <!-- 输入框：12dp 圆角、panel 底、1px 描边，聚焦时描边转主色 -->
+    <style name="InputField">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textColorHint">@color/muted</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingStart">@dimen/space14</item>
+        <item name="android:paddingEnd">@dimen/space14</item>
+        <item name="android:paddingTop">@dimen/space12</item>
+        <item name="android:paddingBottom">@dimen/space12</item>
+        <item name="android:minHeight">@dimen/btnH</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- 主按钮：渐变 brand→brand2、白字、12dp 圆角、按下只做 scale(.97) -->
+    <style name="BtnPrimary">
+        <item name="android:layout_height">@dimen/btnH</item>
+        <item name="android:background">@drawable/bg_btn_primary</item>
+        <item name="android:textColor">@color/onBrand</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">550</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:stateListAnimator">@animator/press_scale</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/space18</item>
+        <item name="android:paddingEnd">@dimen/space18</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- 次按钮：描边式，12dp 圆角 -->
+    <style name="BtnGhost" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_height">@dimen/btnH</item>
+        <item name="cornerRadius">@dimen/radiusSm</item>
+        <item name="strokeColor">@color/lineStrong</item>
+        <item name="strokeWidth">@dimen/lineW</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">550</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- 文字按钮（导航、次要动作） -->
+    <style name="BtnFlat" parent="Widget.Material3.Button.TextButton">
+        <item name="android:layout_height">@dimen/touchMin</item>
+        <item name="android:textColor">@color/text2</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">550</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="rippleColor">@color/tap</item>
+    </style>
+
+    <!-- 开关：未选中走 line-strong，选中走主色 -->
+    <style name="SwitchCampusNet" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="thumbTint">@color/switch_thumb</item>
+        <item name="trackTint">@color/switch_track</item>
+        <item name="trackDecorationTint">@color/switch_track_decoration</item>
+    </style>
+
+</resources>

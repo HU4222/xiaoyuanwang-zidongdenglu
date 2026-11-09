@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    间距只允许出现在 DropLink 视觉风格 4.1 的取值集合里：
+    2, 3, 6, 8, 10, 12, 14, 16, 18, 22, 24
+    不要出现 5 / 7 / 13 这类"看起来差不多"的值。
+-->
+<resources>
+    <dimen name="space2">2dp</dimen>
+    <dimen name="space3">3dp</dimen>
+    <dimen name="space6">6dp</dimen>
+    <dimen name="space8">8dp</dimen>
+    <dimen name="space10">10dp</dimen>
+    <dimen name="space12">12dp</dimen>
+    <dimen name="space14">14dp</dimen>
+    <dimen name="space16">16dp</dimen>
+    <dimen name="space18">18dp</dimen>
+    <dimen name="space22">22dp</dimen>
+    <dimen name="space24">24dp</dimen>
+
+    <!-- 页面左右留白 -->
+    <dimen name="pageH">18dp</dimen>
+    <!-- 卡片内边距 16 × 18 -->
+    <dimen name="cardPadV">16dp</dimen>
+    <dimen name="cardPadH">18dp</dimen>
+    <!-- 卡片之间 -->
+    <dimen name="cardGap">12dp</dimen>
+
+    <!-- 圆角阶梯：越大的面越大，同层一致 -->
+    <dimen name="radiusCard">18dp</dimen>
+    <dimen name="radiusSm">12dp</dimen>
+    <dimen name="radiusSheet">22dp</dimen>
+    <dimen name="radiusPill">999dp</dimen>
+
+    <!-- 触控目标 ≥ 44dp -->
+    <dimen name="touchMin">44dp</dimen>
+    <dimen name="btnH">48dp</dimen>
+    <dimen name="listRowH">56dp</dimen>
+    <dimen name="iconSm">16dp</dimen>
+    <dimen name="iconMd">20dp</dimen>
+    <dimen name="iconLg">24dp</dimen>
+    <dimen name="lineW">1dp</dimen>
+</resources>

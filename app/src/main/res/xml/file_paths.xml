@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FileProvider 暴露的目录：只给缓存里的诊断报告，不给别的 -->
+<paths>
+    <cache-path name="diag" path="diag/" />
+    <files-path name="diag_internal" path="diag/" />
+    <external-files-path name="diag_external" path="diag/" />
+</paths>

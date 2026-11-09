@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    深色不是反相：这一套是独立调过的值，brand 提亮到 #8B87FF（深底上原色会发闷）。
+    对应 DropLink 视觉风格 2.1 的「深色」列。
+-->
+<resources>
+    <color name="bg">#0B1020</color>
+    <color name="bgGrad">#1B2140</color>
+    <color name="bgGradEdge">#001B2140</color>
+    <color name="panel">#141A2E</color>
+    <color name="panelSoft">#19203A</color>
+    <color name="panelSunken">#101627</color>
+
+    <color name="text">#EEF2FF</color>
+    <color name="text2">#B9C2DA</color>
+    <color name="muted">#7F8AA6</color>
+
+    <color name="line">#232B45</color>
+    <color name="lineStrong">#2F395A</color>
+
+    <color name="brand">#8B87FF</color>
+    <color name="brand2">#B18CFF</color>
+    <color name="brandSoft">#1E2450</color>
+    <color name="brandText">#B7B4FF</color>
+    <!-- 提亮后的 brand 作底时白字只有 2:1，改用深底字反白，保证可读 -->
+    <color name="onBrand">#12162B</color>
+
+    <color name="danger">#FF6B8A</color>
+    <color name="dangerSoft">#3A1626</color>
+    <color name="ok">#10B981</color>
+    <color name="okSoft">#0E2A25</color>
+    <color name="warn">#F59E0B</color>
+    <color name="warnSoft">#33260F</color>
+    <color name="idle">#7F8AA6</color>
+
+    <!-- rgba(139,135,255,.14) -->
+    <color name="tap">#248B87FF</color>
+
+    <color name="toastNormal">#111827</color>
+    <color name="toastError">#9F1239</color>
+    <color name="toastOk">#059669</color>
+</resources>

@@ -1,0 +1,39 @@
+# 构建产物
+build/
+*/build/
+.gradle/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# 签名与凭据 —— 绝不提交
+*.jks
+*.keystore
+*.p12
+local.properties
+gradle.properties.local
+secrets.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志与临时文件
+*.log
+*.hprof
+captures/
+.externalNativeBuild/
+.cxx/
+
+# 导出的诊断文件（含运行环境信息）
+diag/
+*.diag.txt

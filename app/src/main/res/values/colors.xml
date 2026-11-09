@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    色彩 token 逐条对应 DropLink 视觉风格 2.1 基础色板（desktop/web/styles.css :root）。
+    深色在 values-night/colors.xml 覆盖，两套独立调色，不是反相。
+    禁止在布局里写死颜色，一律引用这里的 token。
+-->
+<resources>
+    <!-- 面：页面 → 卡片 → 次级 → 凹陷 -->
+    <color name="bg">#F3F5FB</color>
+    <color name="bgGrad">#E8EBFF</color>
+    <color name="bgGradEdge">#00E8EBFF</color>
+    <color name="panel">#FFFFFF</color>
+    <color name="panelSoft">#F7F9FD</color>
+    <color name="panelSunken">#EEF1F8</color>
+
+    <!-- 字 -->
+    <color name="text">#0F172A</color>
+    <color name="text2">#475569</color>
+    <color name="muted">#8B97AD</color>
+
+    <!-- 线 -->
+    <color name="line">#E7EBF4</color>
+    <color name="lineStrong">#D9E0EE</color>
+
+    <!-- 主色（靛蓝 → 紫） -->
+    <color name="brand">#4F46E5</color>
+    <color name="brand2">#7C3AED</color>
+    <color name="brandSoft">#EEF0FF</color>
+    <color name="brandText">#4338CA</color>
+    <color name="onBrand">#FFFFFF</color>
+
+    <!-- 语义色：删除永远 danger，成功永远 ok，不混用 -->
+    <color name="danger">#E11D48</color>
+    <color name="dangerSoft">#FFE9EE</color>
+    <color name="ok">#10B981</color>
+    <color name="okSoft">#E6F9F2</color>
+    <color name="warn">#F59E0B</color>
+    <color name="warnSoft">#FEF3E2</color>
+    <color name="idle">#8B97AD</color>
+
+    <!-- 触摸反馈底色 rgba(79,70,229,.08) -->
+    <color name="tap">#144F46E5</color>
+
+    <!-- toast 三档是规范里唯一允许的固定值，不随主题变 -->
+    <color name="toastNormal">#111827</color>
+    <color name="toastError">#9F1239</color>
+    <color name="toastOk">#059669</color>
+</resources>

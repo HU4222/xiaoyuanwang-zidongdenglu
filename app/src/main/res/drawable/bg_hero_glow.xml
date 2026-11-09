@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 页面顶部光晕：DropLink 里唯一允许的装饰性渐变（-bg-grad） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:centerX="0.5"
+        android:centerY="0"
+        android:endColor="@color/bgGradEdge"
+        android:gradientRadius="220dp"
+        android:startColor="@color/bgGrad"
+        android:type="radial" />
+</shape>

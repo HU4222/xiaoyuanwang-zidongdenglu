@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    运行日志：日志区按 DropLink 的 -panel-sunken（凹陷区／代码块）处理，
+    不套卡片——凹陷本身就是它的语义。
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_hero_glow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 顶栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space12"
+            android:paddingTop="@dimen/space8"
+            android:paddingEnd="@dimen/space12"
+            android:paddingBottom="@dimen/space8">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="@dimen/touchMin"
+                android:layout_height="@dimen/touchMin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="返回"
+                android:padding="@dimen/space12"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_back"
+                android:tint="@color/text2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space6"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="运行日志"
+                android:textColor="@color/text"
+                android:textFontWeight="650"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnPortal"
+                android:layout_width="@dimen/touchMin"
+                android:layout_height="@dimen/touchMin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="打开门户页手动登录"
+                android:padding="@dimen/space12"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_globe"
+                android:tint="@color/text2" />
+
+            <ImageButton
+                android:id="@+id/btnCopy"
+                android:layout_width="@dimen/touchMin"
+                android:layout_height="@dimen/touchMin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="复制"
+                android:padding="@dimen/space12"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_copy"
+                android:tint="@color/text2" />
+
+            <ImageButton
+                android:id="@+id/btnClear"
+                android:layout_width="@dimen/touchMin"
+                android:layout_height="@dimen/touchMin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="清空"
+                android:padding="@dimen/space12"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_trash"
+                android:tint="@color/text2" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvLog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/pageH"
+            android:layout_marginTop="@dimen/space6"
+            android:layout_marginEnd="@dimen/pageH"
+            android:layout_weight="1"
+            android:background="@drawable/bg_log"
+            android:fontFamily="monospace"
+            android:lineSpacingExtra="@dimen/space3"
+            android:padding="@dimen/space14"
+            android:scrollbars="vertical"
+            android:text=""
+            android:textColor="@color/text2"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pageH"
+            android:layout_marginTop="@dimen/space8"
+            android:layout_marginEnd="@dimen/pageH"
+            android:layout_marginBottom="@dimen/space12"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnExport"
+                style="@style/BtnFlat"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/touchMin"
+                android:layout_weight="1"
+                android:text="导出诊断"
+                app:icon="@drawable/ic_share"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/space6"
+                app:iconSize="@dimen/iconMd"
+                app:iconTint="@color/brand" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAutoScroll"
+                style="@style/BtnFlat"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/touchMin"
+                android:layout_marginStart="@dimen/space8"
+                android:layout_weight="1"
+                android:text="自动滚动：开"
+                app:icon="@drawable/ic_list"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/space6"
+                app:iconSize="@dimen/iconMd"
+                app:iconTint="@color/muted" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

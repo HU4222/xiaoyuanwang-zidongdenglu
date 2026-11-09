@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.campusnet.autologin'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.campusnet.autologin"
+        minSdk 24
+        targetSdk 34
+        versionCode 7
+        versionName "1.0.6"
+        resValue "string", "app_name", "校园网自动登录"
+    }
+
+    // 签名信息不进仓库：从 gradle.properties（或同名环境变量）读取。
+    // Signing credentials are never committed — they come from gradle.properties
+    // (or the environment). Without them the release build falls back to the
+    // default debug key, so `./gradlew assembleDebug` works out of the box.
+    def ksPath = findProperty("CNA_KEYSTORE") ?: System.getenv("CNA_KEYSTORE")
+    def hasKeystore = ksPath != null && file(ksPath).exists()
+
+    signingConfigs {
+        if (hasKeystore) {
+            release {
+                storeFile file(ksPath)
+                storePassword findProperty("CNA_STORE_PASSWORD") ?: System.getenv("CNA_STORE_PASSWORD") ?: ""
+                keyAlias findProperty("CNA_KEY_ALIAS") ?: System.getenv("CNA_KEY_ALIAS") ?: ""
+                keyPassword findProperty("CNA_KEY_PASSWORD") ?: System.getenv("CNA_KEY_PASSWORD") ?: ""
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            if (hasKeystore) signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (hasKeystore) signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/*.kotlin_module', 'META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*']
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    // Xposed API 仅编译期可见，运行期由 LSPosed 框架注入，绝不能打进 APK
+    compileOnly project(':xposed-api')
+}
